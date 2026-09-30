@@ -1,10 +1,7 @@
 import {NavigationContainer} from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './src/screens/HomeScreen';
 import DetailScreen from './src/screens/DetailScreen';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import TabNavigator from './src/Navigators/Tabnavigator';
+import { StyleSheet} from 'react-native';
 import 'react-native-gesture-handler'
 import DrawerNavigator from './src/Navigators/DrawerNavigator';
 

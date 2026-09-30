@@ -1,7 +1,7 @@
 import {createDrawerNavigator} from "@react-navigation/drawer";
 import TabNavigator from "./Tabnavigator";
 import DetailScreen from "../screens/DetailScreen";
-import { Ionicons } from "@expo/vector-icons";
+
 const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator(){
