@@ -11,7 +11,7 @@ export type RootStackParamList = {
   MainDrawer: undefined;
   AddRoutine: undefined;
   Detail: undefined;
-};
+};``
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -31,7 +31,7 @@ export default function App() {
             <Stack.Screen
               name="MainDrawer"
               component={DrawerNavigator}
-              options={{ headerShown: false }}
+              options={{ title:'David Burneo'}}
             />
             <Stack.Screen
               name="AddRoutine"

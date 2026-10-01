@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRoutines } from '../context/RoutineContext';
@@ -49,6 +49,10 @@ export default function RoutineListScreen({navigation}: any) {
                   onPress={()=>deleteRoutine(item.id)}
                 >
                   <Ionicons name='trash' size={22} color='#E53935'/>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={()=>Alert.alert("Empezo la Rutina!")}>
+                  <Ionicons name='baseball' size={22} color='#3549e5'/>
                 </TouchableOpacity>
               </View>
             </View>
