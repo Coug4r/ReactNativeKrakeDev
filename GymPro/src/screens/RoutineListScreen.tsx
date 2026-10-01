@@ -1,18 +1,60 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRoutines } from '../context/RoutineContext';
+import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
 
-export default function RoutineListScreen({ navigation }: any) {
+export default function RoutineListScreen({navigation}: any) {
+  const {routines, deleteRoutine} = useRoutines();
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>Lista de Rutinas</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('ChestRutine')}
+      <View style={styles.header}>
+        <TouchableOpacity 
+          style={styles.addButton} 
+          onPress={()=>navigation.navigate('AddRoutine')}
         >
-          <Text style={styles.buttonText}>Rutina de Pecho</Text>
+          <Ionicons name='add' size={24} color='black'/>
         </TouchableOpacity>
       </View>
+
+      {/* Lista de rutinas */}
+      <FlatList
+        data={routines}
+        keyExtractor={(item)=>item.id}
+        contentContainerStyle={styles.listContainer}
+        renderItem={({item})=>{
+          return(
+            <View style={styles.card}>
+              <View style={styles.cardContent}>
+                <Text style={styles.routineName}>{item.name}</Text>
+                <Text style={styles.routineGroup}>{item.muscleGroup}</Text>
+                <Text style={styles.routineDuration}>{item.duration} min</Text>
+              </View>
+              <View style={styles.actions}>
+                <TouchableOpacity 
+                  style={styles.actionButton} 
+                  onPress={()=> navigation.navigate('AddRoutine', {id:item.id})}
+                >
+                  <Ionicons name='pencil' size={22} color='#FF9800' />
+                </TouchableOpacity>
+                <TouchableOpacity 
+                  style={styles.actionButton} 
+                  onPress={()=> navigation.navigate('Detail', {id: item.id})}
+                >
+                  <Ionicons name='eye' size={22} color='#00FF00'/>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                  style={styles.actionButton} 
+                  onPress={()=>deleteRoutine(item.id)}
+                >
+                  <Ionicons name='trash' size={22} color='#E53935'/>
+                </TouchableOpacity>
+              </View>
+            </View>
+          );
+        }}
+      />
     </SafeAreaView>
   );
 }
@@ -22,32 +64,53 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#000', // fondo negro
   },
-  content: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 16,
+  header:{
+    padding:16,
+    alignItems:'flex-end',
   },
-  title: {
-    color: '#00FF00', // verde brillante
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 20,
+  addButton:{
+    backgroundColor:'#00FF00', // verde brillante
+    padding:12,
+    borderRadius:50,
+    elevation:4,
   },
-  button: {
-    backgroundColor: '#00FF00', // verde para el botón
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 10,
-    shadowColor: '#00FF00', // sombra verde
-    shadowOpacity: 0.6,
-    shadowRadius: 6,
-    elevation: 5, // sombra en Android
+  listContainer:{
+    paddingHorizontal:16,
+    paddingBottom:20,
   },
-  buttonText: {
-    color: '#000', // texto negro sobre botón verde
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
+  card:{
+    backgroundColor:'#111', // negro más suave para contraste
+    borderRadius:10,
+    padding:16,
+    marginBottom:12,
+    elevation:3,
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
   },
+  cardContent:{
+    flex:1,
+    marginRight:10,
+  },
+  routineName:{
+    fontSize:16,
+    fontWeight:'bold',
+    color:'#00FF00', // verde para destacar
+    marginBottom:4,
+  },
+  routineGroup:{
+    fontSize:14,
+    color:'#ccc',
+    marginBottom:2,
+  },
+  routineDuration:{
+    fontSize:13,
+    color:'#888',
+  },
+  actions:{
+    flexDirection:'row',
+  },
+  actionButton:{
+    marginHorizontal:6,
+  }
 });
