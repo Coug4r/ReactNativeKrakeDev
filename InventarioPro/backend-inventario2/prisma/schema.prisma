@@ -13,10 +13,19 @@ datasource db {
 }
 
 model Producto {
+<<<<<<< HEAD
   id         Int      @id @default(autoincrement())
   nombre     String
   precio     Float
   categoria  String
   fotoBase64 String? 
   createdAt  DateTime @default(now())
+=======
+id Int @id @default(autoincrement())
+nombre String
+precio Float
+categoria String
+fotoBase64 String? 
+createdAt DateTime @default(now())
+>>>>>>> 47ef122c326332e3ecb4db9dce9ca9d0b3db1ad4
 }
