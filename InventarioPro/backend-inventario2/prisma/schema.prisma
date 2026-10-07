@@ -19,4 +19,5 @@ model Producto {
   categoria  String
   fotoBase64 String? 
   createdAt  DateTime @default(now())
+  codigoBarras String?
 }

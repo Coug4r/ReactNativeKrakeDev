@@ -13,7 +13,7 @@ export const obtenerProductos = async (req: Request, res: Response)=>{
 
 // POST
 export const crearProducto = async (req: Request, res: Response)=>{
-    const {nombre, precio, categoria, fotoBase64, createdAt} = req.body;
+    const {nombre, precio, categoria, fotoBase64, createdAt, codigoBarras} = req.body;
     
     try {
         const nuevoProducto = await prisma.producto.create({
@@ -22,7 +22,8 @@ export const crearProducto = async (req: Request, res: Response)=>{
                 precio: precio !== undefined ? Number(precio) : undefined as any,
                 categoria,
                 fotoBase64,
-                ...(createdAt ? { createdAt: new Date(createdAt) } : {})
+                ...(createdAt ? { createdAt: new Date(createdAt) } : {}),
+                codigoBarras
             }
         });
         res.status(201).json(nuevoProducto);
