@@ -28,7 +28,7 @@ export const crearProducto = async (req: Request, res: Response)=>{
         res.status(201).json(nuevoProducto);
 
     } catch (error) {
-        res.status(500).json({error: "No se pudo crear el producto!"});
+        res.status(500).json({error: "No se pudo crear el producto!"+error});
     }
 };
 
@@ -74,7 +74,7 @@ export const eliminarProducto = async (req: Request, res: Response)=>{
         const productoEliminado = await prisma.producto.delete({
             where: {id: idNum}
         });
-        res.json({mensaje: "Producto eliminado correctamente!", producto: productoEliminado});
+        res.json({mensaje: "Producto eliminado correctamente!"});
     } catch (error) {
         res.status(500).json({error: "Error al eliminar el producto!"});
     }

@@ -4,19 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --watch src --ext ts --exec \"node --env-file=.env --loader ts-node/esm\" src/index.ts"
+    "dev": "nodemon --watch src --ext ts --exec \"node --env-file=.env --loader ts-node/esm\" src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-<<<<<<< HEAD
     "@prisma/adapter-pg": "^7.9.0",
-=======
-    "@prisma/adapter-pg": "^7.10.0",
->>>>>>> 47ef122c326332e3ecb4db9dce9ca9d0b3db1ad4
     "@prisma/client": "^7.9.0",
     "express": "^5.2.1",
     "pg": "^8.23.1"
