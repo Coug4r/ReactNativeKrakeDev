@@ -9,7 +9,7 @@ export default function ProductScreen({navigation}: any){
   return(
     <View style={styles.container}>
       <Text style={styles.header}>Catálogo de Productos</Text>
-
+      <Text>Total de productos: {products.length}</Text>
       <FlatList
         data={products}
         keyExtractor={(item)=>item.id.toString()}

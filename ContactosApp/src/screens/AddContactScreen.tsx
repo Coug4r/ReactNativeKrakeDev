@@ -35,11 +35,11 @@ export default function AddContact({navigation}: any){
     Alert.alert('Éxito', 'Ubicación capturada!');
   }
     
-  const guardar = async ()=>{
-    if(!nombre || !celulat) return;
-    const exito = await addContact({nombre, celulat, fotoBase64, latitud, longitud});
-    if(exito) navigation.goBack();
-  };
+    const guardar = async ()=>{
+      if(!nombre || !celulat) return;
+      const exito = await addContact({nombre, celulat, fotoBase64, latitud, longitud});
+      if(exito) navigation.goBack();
+    };
 
   return (
     <View style={styles.container}>
