@@ -41,7 +41,7 @@ export default function App() {
               options={{ title: "Mis viajes!" }}
             />
             <Stack.Screen
-              name='Nuevo viaje'
+              name='NuevoViaje'
               component={NuevoViajeScreen}
               options={{ title: "Registrar Viaje" }}
             />
