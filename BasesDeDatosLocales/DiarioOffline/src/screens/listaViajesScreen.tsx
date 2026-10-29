@@ -62,8 +62,6 @@ export default function listaViajesScreen({ navigation }: any) {
                     </View>
                 )}
             />
-            
-            {/* CORRECCIÓN APLICADA AQUÍ */}
             <TouchableOpacity 
                 style={styles.fab} 
                 onPress={() => navigation.navigate("NuevoViaje")}

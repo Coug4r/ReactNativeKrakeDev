@@ -31,7 +31,7 @@ export default function NuevoViajeScreen({ navigation }: any) {
 
         try {
             await db.runAsync(
-                'INSERT INTO viajes (titulo, fotoBase64, fecha) VALUES (?, ?, ?)',
+                `INSERT INTO viajes (titulo, fotoBase64, fecha) VALUES (?, ?, ?)`,
                 [titulo, fotoPreview, fechaActual]
             );
             Alert.alert("Éxito", "Guardado con éxito");
@@ -56,7 +56,6 @@ export default function NuevoViajeScreen({ navigation }: any) {
                 <Text style={styles.buttonText}>Tomar una foto</Text>
             </TouchableOpacity>
 
-            {/* CORRECCIÓN: Se agregó estilo con width y height para que la imagen se vea */}
             {fotoPreview && (
                 <Image 
                     source={{ uri: `data:image/jpeg;base64,${fotoPreview}` }}
