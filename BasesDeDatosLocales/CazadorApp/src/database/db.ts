@@ -1,7 +1,7 @@
 import * as SQLite from 'expo-sqlite'
 
 export const initDatabase = async () => {
-    const db = await SQLite.openDatabaseAsync('diario.db')
+    const db = await SQLite.openDatabaseAsync('cazador.db')
     await db.execAsync(
         `PRAGMA journal_mode = WAL;
         CREATE TABLE IF NOT EXIST registros(
